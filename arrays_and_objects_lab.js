@@ -19,12 +19,12 @@ let iss_location = {
 
 // TODO Extract the latitude value, and log it to the console.
 
-let latitude = iss_location.iss_position.latitude
+let latitude = iss_location.iss_position.latitude   //extract data from object
 console.log(latitude)
 
 // TODO Extract the longitude value, and log it to the console.
 
-let longitude = iss_location.iss_position.longitude
+let longitude = iss_location.iss_position.longitude   //extract data from object
 console.log(longitude)
 
 
@@ -43,13 +43,14 @@ let rates = {
 
 // TODO write code to add a new property for Swiss Francs. Symbol is CHF, value is 1.1787.
 
-rates.CHF = 1.1787;
+rates.CHF = 1.1787;     // add new property to rates object
 
 // TODO if you had 100 Euros, write code to get the exchange rate from the object, then calculate
 //      the equivalent value in Australian Dollars (AUD)
 
-let euros = 100;
-let aud = euros * rates.AUD;
+let euros = 100;        // add euros variable
+let aud = euros * rates.AUD;        // create equation to solve the exchange rate
+console.log(aud.toFixed(2))        // print exchange rate up to 2 decimal points
 
 /* c. Use this JavaScript array of objects of cat owners, and their cats. Source, moderncat.com
  */
