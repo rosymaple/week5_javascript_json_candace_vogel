@@ -58,10 +58,6 @@
 
 <p id="order-summary">
     <!-- TODO Use JavaScript to display the order information,
-
-    
-
-
         only if all the required information is entered  -->
 </p>
 
@@ -102,22 +98,22 @@
         // TODO Validate that all six input and select elements have been completed
         //  - check they all have a value
 
-        if (!name) {
+        if (!name) {        // add error to array if no name is entered
             errors.push('Name is required')
             homeownerNameInput.classList.add('error')
         }
 
-        if (!houseNumber) {
+        if (!houseNumber) {     // add error to array if no house number is entered
             errors.push('House number is required')
             homeownerHouseNumberInput.classList.add('error')
         }
 
-        if (!streetName) {
+        if (!streetName) {      // add error to array if no street name is entered
             errors.push('Street name is required')
             homeownerStreetNameInput.classList.add('error')
         }
 
-        if (!city) {
+        if (!city) {        // add error to array if no city is entered
             errors.push('City is required')
             cityInput.classList.add('error')
         }
@@ -128,15 +124,18 @@
 
         if (!zipCode) {
             errors.push('Zip code is required')
-            zipCodeInput.classList.add('error')
+            zipCodeInput.classList.add('error')     // add error to array if no zip code is given
         } else if (!/^\d+$/.test(zipCode) || zipCode < 55001 || zipCode > 56763) {
+            // || stands for or
+            // !/^\d+$.test checks if there are digits entered in zipCode
             errors.push('Zip code must be a number between 55001 and 56763.')
-            zipCodeInput.classList.add('error')
-        }
+            zipCodeInput.classList.add('error')     // add error to array if digit is not between set numbers
+        }       // end of else-if statement
 
-        if (!treeType) {
+        if (!treeType) {        // add error to array if no tree type is given
             errors.push('Tree type is required')
-            treeTypeSelect.classList.add('error')}
+            treeTypeSelect.classList.add('error')
+        }
 
         // Optional extra: add the class .error to any inputs with an error (and only inputs with an error)
         // to give the user visual feedback for which inputs need to be fixed or completed.
@@ -153,21 +152,22 @@
         // display an alert with all of the error messages. (Hint: use join)
         // and then return from this function to prevent further processing
 
-        if (errors.length > 0) {
+        if (errors.length > 0) {        // if there are multiple errors in form, join together and add line break
             alert(errors.join('\n'))
             return
-        }
+        }       // end of if loop over the length of errors array
 
         // TODO - If there are no errors, use a template string to display an order
         // summary in the order summary paragraph.
 
+        // access the HTML using variable we created orderSummaryParagraph to string together variables in readable way
         orderSummaryParagraph.innerHTML = `
         Name: ${name} <br> ${houseNumber} ${streetName} <br> ${city}, Minnesota ${zipCode} <br>
         Tree Type: ${treeType}
         `
-    })
+
+    })      // end of event listener for submitButton
 
 </script>
 </body>
 </html>
-
