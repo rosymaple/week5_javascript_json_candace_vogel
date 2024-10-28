@@ -69,8 +69,9 @@ cats_and_owners.push({name: 'Taylor Swift', cat: 'Meredith'})       // push data
 // TODO write a loop to print each cat owner, and their cat's name, one per line. Use the forEach style.
 
 cats_and_owners.forEach(owner => {
-    console.log(`${owner.name} owns a cat named ${owner.cat}`)
-})
+    // using the arrow function to access each element in the array
+    console.log(`${owner.name} owns a cat named ${owner.cat}`)      //print template string using console.log
+})      //end of forEach method
 
 //   Each line should have a message like "Snoop Dogg's cat is called Miles Davis"
 // TODO print Gary Oldman's cat's name by reading the data in the appropriate array index, using [] notation
@@ -80,11 +81,11 @@ console.log('Gary Oldman\'s cat is named', cats_and_owners[1].cat)      // read 
 
 // TODO print Gary Oldman's cat's name by looping over the array until you find the object with name = "Gary Oldman"
 
-for (let owner of cats_and_owners) {        // for loop over cats_and_owners array
-    if (owner.name === 'Gary Oldman') {
-        console.log('Gary Oldman\'s cat is named', owner.cat)
-    }
-}
+for (let owner of cats_and_owners) {        // for loop over entire cats_and_owners array
+    if (owner.name === 'Gary Oldman') {     // if owner name value is equal to Gary Oldman...
+        console.log('Gary Oldman\'s cat is named', owner.cat)       // log console.
+    }       // end of if statement inside for loop
+}       // end of for loop
 
 /* d. Use the following JSON object, describing the Nobel Prize winners in 2017.
 Source http://api.nobelprize.org/v1/prize.json?year=2017
@@ -226,22 +227,26 @@ let nobel_prize_winners_2017 = {
 
 // TODO print the full name of the Literature Nobel laureate.
 
-let literatureCategory = nobel_prize_winners_2017.prizes
+let literatureCategory = nobel_prize_winners_2017.prizes        // access the prizes property
+    // use .find method on prizes property to find category property "literature" using === equality check
     .find(prize => prize.category === 'literature')
 
-if (literatureCategory && literatureCategory.laureates.length > 0) {
+if (literatureCategory && literatureCategory.laureates.length > 0) {        // if the length of laureates property...
+    // is greater than 0, run this if statement:
     let literatureLaureate = literatureCategory.laureates[0]
+    // access the array of elements in "laureates" using literatureCategory.laureates[0]
     console.log(`${literatureLaureate.firstname} ${literatureLaureate.surname}`)
 }
 
 // TODO print the ids of each of the Physics Nobel laureates. Your code should still work without modification if a laureate was added, or removed.
 
 let physics = nobel_prize_winners_2017.prizes.find(prize => prize.category === 'physics')
+// use .find method on prizes property to search for the 'category' physics
 
-if (physics && physics.laureates.length > 0) {
-    let physicsID = physics.laureates.map(laureate => laureate.id)
-    console.log(physicsID.join(', '))
-}
+if (physics && physics.laureates.length > 0) {      // if the length of physics variable is greater than 0...
+    let physicsID = physics.laureates.map(laureate => laureate.id)  // run this line of code
+    console.log(physicsID.join(', '))       // join all physicsID's together using commas
+}       // end of if statement
 
 // TODO write code to print the names of all of the prize categories (So your output would start physics, chemistry, medicine... ).
 
