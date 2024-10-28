@@ -84,6 +84,8 @@
 
     submitButton.addEventListener('click', function() {
 
+        let errors = []
+
         let name = homeownerNameInput.value
         let houseNumber = homeownerHouseNumberInput.value
         let streetName = homeownerStreetNameInput.value
@@ -142,8 +144,6 @@
         // which will be applied if you give the class .error to any elements on the page.
         // Make sure you remove this class when the form is completed correctly.
 
-        let errors = []
-
         // If a form element has not been completed, or if the data is not valid,
         // add an error message to the errors array. (Hint: use push to add to the end of the array)
         // Add one error message for each problem with the form.
@@ -160,6 +160,11 @@
 
         // TODO - If there are no errors, use a template string to display an order
         // summary in the order summary paragraph.
+
+        orderSummaryParagraph.innerHTML = `
+        Name: ${name} <br> ${houseNumber} ${streetName} <br> ${city}, Minnesota ${zipCode} <br>
+        Tree Type: ${treeType}
+        `
     })
 
 </script>
