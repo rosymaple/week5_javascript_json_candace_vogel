@@ -251,19 +251,27 @@ if (physics && physics.laureates.length > 0) {      // if the length of physics 
 // TODO write code to print the names of all of the prize categories (So your output would start physics, chemistry, medicine... ).
 
 let categories = nobel_prize_winners_2017.prizes.map(prize => prize.category)
-
-console.log(categories.join(', '))
+// use .map method on prizes array to create new array that contains all prize categories
+console.log(categories.join(', '))      //join categories elements together using comma
 
 // TODO write code to print the total number of prize categories
 
 let totalNumberOfCategories = new Set(categories).size
-console.log(totalNumberOfCategories)
+// new Set stores unique values of any data type...
+// because we need to create a new variable that will hold unique categories only
+// .size returns unique values from categories array as a number
+console.log(totalNumberOfCategories)    // log totalNumberOfCategories to console
 
 // TODO write code to count the total number of laureates from 2017.
 
-let laureatesFrom2017 = nobel_prize_winners_2017.prizes
-    .filter(prize => prize.year === "2017")
+let laureatesFrom2017 = nobel_prize_winners_2017.prizes     // access prizes property
+    .filter(prize => prize.year === "2017")     // use filter function to create new array...
+    // containing only the elements with prize year being exactly "2017"
     .flatMap(prize => prize.laureates)
-    .length
+    // use .flatMap method to map each element to a single array
+    // every laureate from 2017 will be added to our new array laureatesFrom2017
+    .length     // use .length to find number of elements inside new array
 
-console.log(laureatesFrom2017)
+console.log(laureatesFrom2017)      // print total number of laureates from 2017 in console
+
+
