@@ -251,6 +251,7 @@ if (physics && physics.laureates.length > 0) {      // if the length of physics 
 // TODO write code to print the names of all of the prize categories (So your output would start physics, chemistry, medicine... ).
 
 let categories = nobel_prize_winners_2017.prizes.map(prize => prize.category)
+
 console.log(categories.join(', '))
 
 // TODO write code to print the total number of prize categories
