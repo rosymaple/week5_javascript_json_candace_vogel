@@ -64,7 +64,7 @@ let cats_and_owners = [
 
 // TODO Taylor Swift's cat is called 'Meredith'. Write code to add this data to the array.
 
-cats_and_owners.push({name: 'Taylor Swift', cat: 'Meredith'})
+cats_and_owners.push({name: 'Taylor Swift', cat: 'Meredith'})       // push data to cats_and_owners array
 
 // TODO write a loop to print each cat owner, and their cat's name, one per line. Use the forEach style.
 
@@ -75,11 +75,12 @@ cats_and_owners.forEach(owner => {
 //   Each line should have a message like "Snoop Dogg's cat is called Miles Davis"
 // TODO print Gary Oldman's cat's name by reading the data in the appropriate array index, using [] notation
 
-console.log('Gary Oldman\'s cat is named', cats_and_owners[1].cat)
+console.log('Gary Oldman\'s cat is named', cats_and_owners[1].cat)      // read and print data...
+                                                                        // accessed from array index.
 
 // TODO print Gary Oldman's cat's name by looping over the array until you find the object with name = "Gary Oldman"
 
-for (let owner of cats_and_owners) {
+for (let owner of cats_and_owners) {        // for loop over cats_and_owners array
     if (owner.name === 'Gary Oldman') {
         console.log('Gary Oldman\'s cat is named', owner.cat)
     }
