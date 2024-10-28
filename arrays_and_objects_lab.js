@@ -18,9 +18,14 @@ let iss_location = {
 }
 
 // TODO Extract the latitude value, and log it to the console.
+
+let latitude = iss_location.iss_position.latitude
+console.log(latitude)
+
 // TODO Extract the longitude value, and log it to the console.
 
-
+let longitude = iss_location.iss_position.longitude
+console.log(longitude)
 
 
 /* b. Use this JavaScript object of exchange rates relative to Euros.
@@ -37,10 +42,14 @@ let rates = {
 }
 
 // TODO write code to add a new property for Swiss Francs. Symbol is CHF, value is 1.1787.
+
+rates.CHF = 1.1787;
+
 // TODO if you had 100 Euros, write code to get the exchange rate from the object, then calculate
 //      the equivalent value in Australian Dollars (AUD)
 
-
+let euros = 100;
+let aud = euros * rates.AUD;
 
 /* c. Use this JavaScript array of objects of cat owners, and their cats. Source, moderncat.com
  */
@@ -53,12 +62,27 @@ let cats_and_owners = [
 ]
 
 // TODO Taylor Swift's cat is called 'Meredith'. Write code to add this data to the array.
+
+cats_and_owners.push({name: 'Taylor Swift', cat: 'Meredith'})
+
 // TODO write a loop to print each cat owner, and their cat's name, one per line. Use the forEach style.
+
+cats_and_owners.forEach(owner => {
+    console.log(`${owner.name} owns a cat named ${owner.cat}`)
+})
+
 //   Each line should have a message like "Snoop Dogg's cat is called Miles Davis"
 // TODO print Gary Oldman's cat's name by reading the data in the appropriate array index, using [] notation
+
+console.log('Gary Oldman\'s cat is named', cats_and_owners[1].cat)
+
 // TODO print Gary Oldman's cat's name by looping over the array until you find the object with name = "Gary Oldman"
 
-
+for (let owner of cats_and_owners) {
+    if (owner.name === 'Gary Oldman') {
+        console.log('Gary Oldman\'s cat is named', owner.cat)
+    }
+}
 
 /* d. Use the following JSON object, describing the Nobel Prize winners in 2017.
 Source http://api.nobelprize.org/v1/prize.json?year=2017
@@ -196,3 +220,42 @@ let nobel_prize_winners_2017 = {
         }
     ]
 }
+
+
+// TODO print the full name of the Literature Nobel laureate.
+
+let literatureCategory = nobel_prize_winners_2017.prizes
+    .find(prize => prize.category === 'literature')
+
+if (literatureCategory && literatureCategory.laureates.length > 0) {
+    let literatureLaureate = literatureCategory.laureates[0]
+    console.log(`${literatureLaureate.firstname} ${literatureLaureate.surname}`)
+}
+
+// TODO print the ids of each of the Physics Nobel laureates. Your code should still work without modification if a laureate was added, or removed.
+
+let physics = nobel_prize_winners_2017.prizes.find(prize => prize.category === 'physics')
+
+if (physics && physics.laureates.length > 0) {
+    let physicsID = physics.laureates.map(laureate => laureate.id)
+    console.log(physicsID.join(', '))
+}
+
+// TODO write code to print the names of all of the prize categories (So your output would start physics, chemistry, medicine... ).
+
+let categories = nobel_prize_winners_2017.prizes.map(prize => prize.category)
+console.log(categories.join(', '))
+
+// TODO write code to print the total number of prize categories
+
+let totalNumberOfCategories = new Set(categories).size
+console.log(totalNumberOfCategories)
+
+// TODO write code to count the total number of laureates from 2017.
+
+let laureatesFrom2017 = nobel_prize_winners_2017.prizes
+    .filter(prize => prize.year === "2017")
+    .flatMap(prize => prize.laureates)
+    .length
+
+console.log(laureatesFrom2017)
