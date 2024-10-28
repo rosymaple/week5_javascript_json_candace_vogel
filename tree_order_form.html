@@ -75,8 +75,9 @@
     let treeTypeSelect = document.querySelector('#tree-type')
 
     // TODO create a variable for city input element
+    let cityInput = document.querySelector('#city') //use querySelector to select #city
     // TODO create a variable for zip code input element
-
+    let zipCodeInput = document.querySelector('#zipcode')   //use querySelector to select #zipcode
     let submitButton = document.querySelector('#submit-order')
 
     let orderSummaryParagraph = document.querySelector('#order-summary')
@@ -89,14 +90,51 @@
         let treeType = treeTypeSelect.value
 
         // TODO get the value from the input#city
+
+        let city = cityInput.value //use .value on our new input variables to access data
+
         // TODO get the value from the input#zipcode
+
+        let zipCode = zipCodeInput.value    //use .value on our new input variables to access data
 
         // TODO Validate that all six input and select elements have been completed
         //  - check they all have a value
 
+        if (!name) {
+            errors.push('Name is required')
+            homeownerNameInput.classList.add('error')
+        }
+
+        if (!houseNumber) {
+            errors.push('House number is required')
+            homeownerHouseNumberInput.classList.add('error')
+        }
+
+        if (!streetName) {
+            errors.push('Street name is required')
+            homeownerStreetNameInput.classList.add('error')
+        }
+
+        if (!city) {
+            errors.push('City is required')
+            cityInput.classList.add('error')
+        }
+
         // TODO Validate the zipcode is in the range 55001 and 56763.
         // to check that the zip code is in Minnesota.
         // Make sure your script doesn't accept non-numeric input for the zip code.
+
+        if (!zipCode) {
+            errors.push('Zip code is required')
+            zipCodeInput.classList.add('error')
+        } else if (!/^\d+$/.test(zipCode) || zipCode < 55001 || zipCode > 56763) {
+            errors.push('Zip code must be a number between 55001 and 56763.')
+            zipCodeInput.classList.add('error')
+        }
+
+        if (!treeType) {
+            errors.push('Tree type is required')
+            treeTypeSelect.classList.add('error')}
 
         // Optional extra: add the class .error to any inputs with an error (and only inputs with an error)
         // to give the user visual feedback for which inputs need to be fixed or completed.
@@ -115,14 +153,14 @@
         // display an alert with all of the error messages. (Hint: use join)
         // and then return from this function to prevent further processing
 
+        if (errors.length > 0) {
+            alert(errors.join('\n'))
+            return
+        }
 
         // TODO - If there are no errors, use a template string to display an order
         // summary in the order summary paragraph.
-
-
     })
-
-
 
 </script>
 
