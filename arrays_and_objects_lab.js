@@ -274,4 +274,3 @@ let laureatesFrom2017 = nobel_prize_winners_2017.prizes     // access prizes pro
 
 console.log(laureatesFrom2017)      // print total number of laureates from 2017 in console
 
-
