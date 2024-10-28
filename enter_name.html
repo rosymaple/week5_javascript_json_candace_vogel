@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+
+  <body>
+    <p>Please enter your name:</p>
+    <input type="text" id="username">
+    <button id="save-user-name">Save</button>       <!-- display save button in HTML -->
+
+    <p id="welcome-message"></p>        <!-- display welcome message using JavaScript here -->
+
+   <script>
+
+    // define HTML elements inside the script using querySelector on document
+    let saveButton = document.querySelector('#save-user-name')
+    let nameInput = document.querySelector('#username')
+    let welcomeMessage = document.querySelector('#welcome-message')
+
+    // add event listener on our save button
+    saveButton.addEventListener('click', function() {
+      let name = nameInput.value          // define in script using .value on nameInput, our #username
+
+      if (name.length < 2) {      // if #username is less than 2 letters...
+        welcomeMessage.innerHTML = 'Please enter at least 2 letters.'       // display this for user
+      } else {        // if-else statement
+        welcomeMessage.innerHTML = `Welcome, ${name}!`
+      }       // end of if-else block to check length of #username
+    })      // end of event listener
+    </script>
+  </body>
+</html>
